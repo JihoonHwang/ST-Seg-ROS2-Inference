@@ -119,12 +119,19 @@ BIBTEX
 
 @ARTICLE{10925898,
   author={Hwang, Ji-Hoon and Kim, Daeyoung and Yoon, Hyung-Suk and Kim, Dong-Wook and Seo, Seung-Woo},
+  
   journal={IEEE Robotics and Automation Letters}, 
+  
   title={How to Relieve Distribution Shifts in Semantic Segmentation for Off-Road Environments}, 
+  
   year={2025},
+  
   volume={10},
+  
   number={5},
+  
   pages={4500-4507},
+  
   keywords={Training;Semantic segmentation;Robot sensing systems;Feature extraction;Navigation;Robots;Semantics;Standards;Robustness;Roads;Deep learning for visual perception;computer vision for transportation;object detection;segmentation and categorization},
   doi={10.1109/LRA.2025.3551536}}
 
