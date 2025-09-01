@@ -1,6 +1,6 @@
 # Semantic Segmentation Package
 
-## 환경 요구사항
+## Environment Settings
 
 - **Python**: 3.10
 - **Numpy**: 1.24.4
@@ -10,85 +10,72 @@
 - **MMCV**: 2.2.0
 - **MMSegmentation**: 1.2.2
 
-## 패키지 구조
+## Package Structure
 
 ```
 semantic_segmentation/
 ├── config/                    # 설정 파일들
 │   ├── config.yaml           # 기본 설정
-│   ├── config_MIC.yaml       # MIC 버전 설정
 │   ├── config_STseg_front.yaml   # 전방 카메라 설정
 │   ├── config_STseg_back.yaml    # 후방 카메라 설정
-│   ├── config_STseg_left.yaml    # 좌측 카메라 설정
-│   └── config_STseg_right.yaml   # 우측 카메라 설정
 ├── launch/
 │   └── semantic_segmentation.launch.py
 └── semantic_segmentation/     # 소스 코드
     ├── semantic_segmentation.py
-    ├── semantic_segmentation_MIC.py
     ├── semantic_segmentation_STseg_front.py
     ├── semantic_segmentation_STseg_back.py
-    ├── semantic_segmentation_STseg_left.py
-    └── semantic_segmentation_STseg_right.py
 ```
 
-## 설정 (Configuration)
+## Configuration
 
-각 카메라별 설정은 `semantic_segmentation/config/config_STseg_{camera}.yaml` 파일에서 관리
+manage configuration in `semantic_segmentation/config/config_STseg_{camera}.yaml` 
 
-### 설정 파라미터
+### Configuration parameters
 
-- **rgb_topic**: 입력 RGB 이미지 토픽
-- **seg_topic**: 출력 분할 결과 토픽  
-- **model_config**: 모델 설정 파일 경로
-- **model_weight**: 모델 가중치 파일 경로
+- **rgb_topic**: input rgb image topic
+- **seg_topic**: output segmentation image topic 
+- **model_config**: model config file path
+- **model_weight**: model weight file path
 
-### 기본 설정값
+### Default Configuration
 
 ```yaml
-# 예시 - 전방 카메라
+# Example - Front Camera
 rgb_topic: /zed_front/zed_node/left/image_rect_color/compressed
 seg_topic: /seg_front/left/compressed
 model_config: "~/path/to/model/config"
 model_weight: "~/path/to/model/weight"
 ```
 
-## 토픽
+## Topics
 
-### 입력 토픽
-- `/zed_front/zed_node/left/image_rect_color/compressed` (기본)
-- 각 카메라별로 설정 파일에서 변경 가능
+### Subscribe Topic
+- `/zed_front/zed_node/left/image_rect_color/compressed` (default)
+- It can be modified for each camera in the configuration file.
 
-### 출력 토픽  
-- `/seg_front/left/compressed` (기본)
-- 각 카메라별로 설정 파일에서 변경 가능
+### Publish Topic
+- `/seg_front/left/compressed` (default)
+- It can be modified for each camera in the configuration file.
 
 
-## 사용법
+## Usage
 
-### 단일 노드 실행
+### Single Node Launch
 
 ```bash
-# 기본 버전
+# default
 ros2 launch semantic_segmentation semantic_segmentation.launch.py
 
-# 특정 버전 실행
+# ST-Seg version
 ros2 launch semantic_segmentation semantic_segmentation.launch.py versions:="STseg_front"
-ros2 launch semantic_segmentation semantic_segmentation.launch.py versions:="MIC"
 ```
 
-### 다중 노드 실행
+### Multi Node Launch
 
 ```bash
-# 전방 + 후방 카메라
+# Front + Rear Camera
 ros2 launch semantic_segmentation semantic_segmentation.launch.py versions:="STseg_front,STseg_back"
 
-# 좌측 + 우측 카메라  
-ros2 launch semantic_segmentation semantic_segmentation.launch.py versions:="STseg_left,STseg_right"
-
-# 모든 STseg 버전
-ros2 launch semantic_segmentation semantic_segmentation.launch.py versions:="STseg_front,STseg_back,STseg_left,STseg_right"
-```
 ### ALIAS
 
 ```bash
@@ -99,10 +86,15 @@ alias seg_fb='ros2 launch semantic_segmentation semantic_segmentation.launch.py 
 
 ### Weight 
 
+SegFormer Weights:
+
+
+ST-Seg Weights:
+
 https://drive.google.com/file/d/1sM2AsjgaRy2mj13oAh1IWgMykL_rncjk/view?usp=sharing
 
-###설치이슈
+### Possible build error
 
-빌드안될때, setuptools 버젼 낮추기
-opencv - numpy 버젼 맞추기
+"If the build fails, try downgrading the setuptools version."
+"Make sure the OpenCV and NumPy versions are compatible."
 
