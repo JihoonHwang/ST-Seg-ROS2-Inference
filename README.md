@@ -16,6 +16,16 @@ J. -H. Hwang, D. Kim, H. -S. Yoon, D. -W. Kim and S. -W. Seo, "How to Relieve Di
 
 "For installing mmcv and mmseg, refer to https://github.com/open-mmlab/mmsegmentation."
 
+"If you want to do a source install, the ~/library/mmcv and ~/library/mmsegmentation directories are already included, so you can proceed with the source installation."
+```
+cd ~/senmantic_segmentation/library/mmcv
+pip install -r requirements/optional.txt
+MMCV_WITHS_OPS=1 pip install -e .
+
+cd ~/semantic_segmentation/library/mmsegmentation
+pip install -v -e .
+```
+
 ## Package Structure
 
 ```
