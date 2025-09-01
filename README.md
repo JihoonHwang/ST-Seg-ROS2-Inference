@@ -10,17 +10,19 @@
 - **MMCV**: 2.2.0
 - **MMSegmentation**: 1.2.2
 
+"For installing mmcv and mmseg, refer to https://github.com/open-mmlab/mmsegmentation."
+
 ## Package Structure
 
 ```
 semantic_segmentation/
-├── config/                    # 설정 파일들
-│   ├── config.yaml           # 기본 설정
-│   ├── config_STseg_front.yaml   # 전방 카메라 설정
-│   ├── config_STseg_back.yaml    # 후방 카메라 설정
+├── config/                    # Config files
+│   ├── config.yaml           # default files
+│   ├── config_STseg_front.yaml   # Front camera config
+│   ├── config_STseg_back.yaml    # Rear camera config
 ├── launch/
 │   └── semantic_segmentation.launch.py
-└── semantic_segmentation/     # 소스 코드
+└── semantic_segmentation/     # Source files
     ├── semantic_segmentation.py
     ├── semantic_segmentation_STseg_front.py
     ├── semantic_segmentation_STseg_back.py
