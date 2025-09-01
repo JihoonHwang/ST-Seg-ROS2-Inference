@@ -1,0 +1,28 @@
+semantic_segmentation_STseg_back:
+  ros__parameters:
+    agent: ""
+
+    subscribe:
+      # rgb_topic: "/image/front/left/compressed"
+      rgb_topic: "/zed_back/zed_node/left/image_rect_color/compressed"
+      # rgb_topic: "/left/compressed"
+
+    publish:
+      seg_topic: "/seg_back/left/compressed"
+      # resolution: [640, 360]
+      # resolution: [960, 540]
+      resolution: [1280, 720]
+
+    # ST-Seg
+    model:
+      device: "cuda:0"
+      config: "/root/docker-workspace/ROS2_seg/src/semantic_segmentation/library/model/segformer.py"
+      weight: "/root/docker-workspace/ROS2_seg/src/semantic_segmentation/library/model/ST_seg.pth"
+      palette: [  0,   0,   0,  # background / 검정
+                155, 155, 155,  #   0,   0, 255,  # smooth ground / 회색
+                155, 155, 155,  # 155, 155, 155,  # rough ground / 회색
+                155, 155, 155,  # 255,   0,   0,  # bumpy ground / 회색
+                173, 255,  47,  # soft veg / 연두
+                  0, 139, 139,  # hard veg / 청록
+                155, 155, 155,  # puddle / 회색
+                138,  43, 226]  # obstacle / 보라

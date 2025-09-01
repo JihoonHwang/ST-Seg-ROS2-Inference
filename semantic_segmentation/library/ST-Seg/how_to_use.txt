@@ -1,0 +1,42 @@
+docker image import 로 먼저 seg.tar 로드
+
+docker 실행
+docker run -it --gpus all --net=host --shm-size=12g -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v /home/dongwook/code:/home/code -v /media/dongwook/b56af4ee-eebf-45e6-9905-160eb4a7889e:/home/dataset --name mmseg mmseg:latest /bin/bash
+위에서 -v 부분의 volume mount 부분 mmseg code 폴더가 들어가도록 잘 설정하기
+
+# 1.7.1, 0.30.0
+mmcv, mmseg 설치
+cd mmcv
+pip3 install -e .
+cd ..
+pip3 install -e .
+
+
+사용법
+python3 demo/image_feature_demo.py (input image 폴더) ./paper_work/ST_SEG.py ./paper_work/latest.pth --out-file (pca 사진 저장 폴더) --palette group8 --opacity 1
+
+예시
+python3 demo/image_feature_demo.py /home/code/mmseg/left ./paper_work/ST_SEG.py ./paper_work/latest.pth --out-file ./save --palette group8 --opacity 1
+
+
+
+demo/image_feature_demo.py에 55번째 줄: np.save("./save_feature/"+im.split('.')[0] + '.npy', latent.squeeze().permute(1,2,0).detach().cpu().numpy()) 부분이 feature image 저장하는 부분
+latent 텐서를 잘 저장하면 사용 가능
+
+python3 demo/image_feature_demo.py /home/dataset/husky_2nd_ADD/0421_buddle_control_bag/buddle1/left ./paper_work/ST_SEG.py ./paper_work/latest.pth --out-file ./save --palette group8 --opacity 1
+
+python3 demo/image_feature_demo.py /home/dataset/husky_2nd_ADD/0618_gwanak_neural_zed/gwanak1_neural/raw/left ./paper_work/ST_SEG.py ./paper_work/latest.pth --out-file ./save --palette group8 --opacity 1
+python3 demo/image_feature_demo.py /home/dataset/husky_2nd_ADD/0618_gwanak_neural_zed/gwanak1_performance/raw/left ./paper_work/ST_SEG.py ./paper_work/latest.pth --out-file ./save --palette group8 --opacity 1
+
+
+palette
+[[  0   0   0] background 검정
+ [155 155 155] smooth ground 회색
+ [155 155 155] rough ground 회색
+ [155 155 155] bumpy ground 회색
+ [173 255  47] soft veg 연두
+ [  0 139 139] hard veg 청록
+ [155 155 155] puddle 회색
+ [138  43 226]] obstacle 보라
+
+seg image 저장하는 부분: base.py의 show_result에 mmcv.imwrite

@@ -1,0 +1,35 @@
+semantic_segmentation_MIC:
+  ros__parameters:
+    agent: ""
+
+    subscribe:
+      rgb_topic: "/image/front/left/compressed"
+
+    publish:
+      seg_topic: "image/front/seg/compressed"
+      resolution: [640, 360]
+
+    # UDA (MIC)
+    model:
+      device: "cuda:0"
+
+      # 5 classes
+      config: "/workspace/ROSMOS_ws/src/semantic_segmentation/library/MIC/seg/work_dirs/save/250527_0651_sun2R517_b5_class5_360x360_f8cf0/250527_0651_sun2R517_b5_class5_360x360_f8cf0.py"
+      weight: "/workspace/ROSMOS_ws/src/semantic_segmentation/library/MIC/seg/work_dirs/save/250527_0651_sun2R517_b5_class5_360x360_f8cf0/iter_30000.pth"
+      palette: [148, 103, 189,  # Ceiling,
+                44, 160, 44,    # Floor,
+                214, 39, 40,    # Object,
+                31, 119, 180,   # Wall,
+                255, 127, 14]   # Window
+
+      # # 8 classes
+      # config: "/workspace/ROSMOS_ws/src/semantic_segmentation/library/MIC/seg/work_dirs/save/250528_1438_sun2R517_b5_class8_360x360_fa919/250528_1438_sun2R517_b5_class8_360x360_fa919.py"
+      # weight: "/workspace/ROSMOS_ws/src/semantic_segmentation/library/MIC/seg/work_dirs/save/250528_1438_sun2R517_b5_class8_360x360_fa919/iter_30000.pth"
+      # palette: [127, 127, 127,  # Bed
+      #           148, 103, 189,  # Ceiling
+      #           227, 119, 194,  # Chair
+      #           44, 160, 44,    # Floor
+      #           214, 39, 40,    # Object
+      #           140, 86, 75,    # Table
+      #           31, 119, 180,   # Wall
+      #           255, 127, 14]   # Window

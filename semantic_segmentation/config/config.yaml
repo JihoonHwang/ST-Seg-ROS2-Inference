@@ -1,0 +1,21 @@
+semantic_segmentation:
+  ros__parameters:
+    agent: ""
+
+    subscribe:
+      rgb_topic: "/image/front/left/compressed"
+
+    publish:
+      seg_topic: "image/front/seg/compressed"
+      resolution: [640, 360]
+
+    # SegFormer
+    model:
+      device: "cuda:0"
+      config: "/workspace/ROSMOS_ws/src/semantic_segmentation/library/mmsegmentation/result/250505_segformer_b3_sun5class/segformer_mit-b3_4xb32-20k_sun-480x480.py"
+      weight: "/workspace/ROSMOS_ws/src/semantic_segmentation/library/mmsegmentation/result/250505_segformer_b3_sun5class/iter_18600.pth"
+      palette: [148, 103, 189,  # Ceiling,
+                44, 160, 44,    # Floor,
+                214, 39, 40,    # Object,
+                31, 119, 180,   # Wall,
+                255, 127, 14]   # Window
