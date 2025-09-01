@@ -102,7 +102,7 @@ alias seg_fb='ros2 launch semantic_segmentation semantic_segmentation.launch.py 
 
 ### Weight 
 
-- SegFormer Weights:
+- SegFormer(Baseline) Weights:
 https://drive.google.com/file/d/1w602JVDqZzbVz8nKypTgp4kHAB-Ko12n/view?usp=drive_link
 
 - ST-Seg Weights:
