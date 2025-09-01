@@ -1,4 +1,4 @@
-# Semantic Segmentation Package
+# ST-Seg ROS2 Inference Package
 
 ## Environment Settings
 
