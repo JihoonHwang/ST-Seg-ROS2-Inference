@@ -22,7 +22,7 @@ cd ~/semantic_segmentation/library/mmcv
 pip install -r requirements/optional.txt
 MMCV_WITHS_OPS=1 pip install -e .
 
-cd ~/semantic_segmentation/library/mmsegmentation
+cd ~/semantic_segmentation/library/ST-Seg
 pip install -v -e .
 ```
 
