@@ -1,5 +1,9 @@
 # ST-Seg ROS2 Inference Package
 
+**Official ROS2 Inference Package of ST-Seg**
+
+J. -H. Hwang, D. Kim, H. -S. Yoon, D. -W. Kim and S. -W. Seo, "How to Relieve Distribution Shifts in Semantic Segmentation for Off-Road Environments," in IEEE Robotics and Automation Letters, vol. 10, no. 5, pp. 4500-4507, May 2025
+
 ## Environment Settings
 
 - **Python**: 3.10
@@ -10,7 +14,17 @@
 - **MMCV**: 2.2.0
 - **MMSegmentation**: 1.2.2
 
-"For installing mmcv and mmseg, refer to https://github.com/open-mmlab/mmsegmentation."
+**"For installing mmcv and mmseg, refer to https://github.com/open-mmlab/mmsegmentation."**
+
+**"If you want to do a source install, the ~/library/mmcv and ~/library/mmsegmentation directories are already included, so you can proceed with the source installation."**
+```
+cd ~/semantic_segmentation/library/mmcv
+pip install -r requirements/optional.txt
+MMCV_WITHS_OPS=1 pip install -e .
+
+cd ~/semantic_segmentation/library/mmsegmentation
+pip install -v -e .
+```
 
 ## Package Structure
 
@@ -88,7 +102,7 @@ alias seg_fb='ros2 launch semantic_segmentation semantic_segmentation.launch.py 
 
 ### Weight 
 
-- SegFormer Weights:
+- SegFormer(Baseline) Weights:
 https://drive.google.com/file/d/1w602JVDqZzbVz8nKypTgp4kHAB-Ko12n/view?usp=drive_link
 
 - ST-Seg Weights:
@@ -98,4 +112,23 @@ https://drive.google.com/file/d/1sM2AsjgaRy2mj13oAh1IWgMykL_rncjk/view?usp=shari
 
 "If the build fails, try downgrading the setuptools version."
 "Make sure the OpenCV and NumPy versions are compatible."
+
+## Citation
+
+If you find this work useful in your research, please cite:
+
+```bibtex
+@ARTICLE{10925898,
+  author={Hwang, Ji-Hoon and Kim, Daeyoung and Yoon, Hyung-Suk and Kim, Dong-Wook and Seo, Seung-Woo},
+  journal={IEEE Robotics and Automation Letters}, 
+  title={How to Relieve Distribution Shifts in Semantic Segmentation for Off-Road Environments}, 
+  year={2025},
+  volume={10},
+  number={5},
+  pages={4500-4507},
+  keywords={Training;Semantic segmentation;Robot sensing systems;Feature extraction;Navigation;Robots;Semantics;Standards;Robustness;Roads;Deep learning for visual perception;computer vision for transportation;object detection;segmentation and categorization},
+  doi={10.1109/LRA.2025.3551536}
+}
+
+
 
