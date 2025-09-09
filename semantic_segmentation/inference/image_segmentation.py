@@ -205,10 +205,10 @@ def main():
     parser.add_argument('input_folder', type=str, help='Path to the folder containing input images')
     parser.add_argument('output_folder', type=str, help='Path to the folder where segmented images will be saved')
     parser.add_argument('--config', type=str, 
-                        default='/root/docker-workspace/st-seg/ST-Seg-ROS2-Inference/semantic_segmentation/library/model/segformer.py',
+                        default='../library/model/segformer.py',
                         help='Path to the model configuration file')
     parser.add_argument('--weight', type=str,
-                        default='/root/docker-workspace/st-seg/ST-Seg-ROS2-Inference/semantic_segmentation/library/model/ST_seg.pth',
+                        default='../library/model/ST_seg.pth',
                         help='Path to the model weights file')
     parser.add_argument('--device', type=str, default='cuda:0',
                         help='Device to run the model on (cuda:0, cuda:1, cpu, etc.)')
