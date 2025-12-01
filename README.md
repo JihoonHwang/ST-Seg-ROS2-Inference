@@ -4,6 +4,8 @@
 
 J. -H. Hwang, D. Kim, H. -S. Yoon, D. -W. Kim and S. -W. Seo, "How to Relieve Distribution Shifts in Semantic Segmentation for Off-Road Environments," in IEEE Robotics and Automation Letters, vol. 10, no. 5, pp. 4500-4507, May 2025
 
+https://github.com/JihoonHwang/ST-Seg-ROS2-Inference
+
 ## Environment Settings
 
 - **Python**: 3.10
